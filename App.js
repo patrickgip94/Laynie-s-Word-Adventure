@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-import { colors } from './src/constants';
+import { colors, CLEAR, ENTER } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 
 
@@ -26,6 +26,24 @@ export default function App() {
 
   const onKeyPressed = (key) => {
     const updatedRows = copyArray(rows)
+
+    if (key === CLEAR) {
+      const prevCol = currentCol - 1;
+      if (prevCol >= 0) {
+        updatedRows[currentRow][prevCol] = "";
+        setRows(updatedRows);
+        setCurrentCol(prevCol);
+      }
+      return;
+    }
+
+    if (key === ENTER) {
+      if (currentCol === rows[0].length) {
+        setCurrentRow(currentRow + 1);
+        setCurrentCol(0);
+      }
+      return;
+    }
 
     if (currentCol < rows[0].length) {
       updatedRows[currentRow][currentCol] = key;
