@@ -1,20 +1,82 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Image, Alert } from 'react-native';
-import { colors, CLEAR, ENTER } from './src/constants';
+import { colors, CLEAR, ENTER, colorsToEmoji } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 
 
-const NUMBER_OF_TRIES = 6;
+const NUMBER_OF_TRIES = 5;
 
 const copyArray = (arr) => {
   return [...arr.map((rows) => [...rows])]
 };
 
+const getDayOfTheYear = () => {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const diff = now - start;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const day = Math.floor(diff / oneDay);
+  return day;
+}
+const dayOfTheYear = getDayOfTheYear
 
+// const words = [
+//   "Hello",
+//   "Dog",
+//   "Cat",
+//   "Boba",
+//   "Duck",
+//   "Bear",
+//   "Mom",
+//   "Dad",
+//   "Tree",
+//   "Water",
+//   "House",
+//   "Food",
+//   "Apple",
+//   "Sky",
+//   "Blue",
+//   "Red",
+//   "Yellow",
+//   "Green",
+//   "apple",
+//   "baby",
+//   "ball",
+//   "banana",
+//   "bear",
+//   "bed",
+//   "bike",
+//   "bird",
+//   "book",
+//   "bottle",
+//   "butterfly",
+//   "car",
+//   "cat",
+//   "cookie",
+//   "cow",
+//   "dog",
+//   "duck",
+//   "egg",
+//   "fish",
+//   "flower",
+//   "frog",
+//   "hat",
+//   "house",
+//   "juice",
+//   "milk",
+//   "moon",
+//   "shoe",
+//   "star",
+//   "sun",
+//   "train",
+//   "tree",
+//   "water"
+// ]
 
 export default function App() {
-  const word = 'hello';
+  // const word = words[dayOfTheYear];
+  const word = "hello"
   const letters = word.split(''); // return array of letters ['h','e','l','l','o']
 
   const [rows, setRows] = useState(new Array(NUMBER_OF_TRIES).fill(
@@ -32,10 +94,11 @@ export default function App() {
   }, [currentRow])
 
   const checkGameState = () => {
-    if (checkIfWon()) {
+    if (checkIfWon() && gameState !== 'won') {
       Alert.alert("Good Job Laynie!")
       setGameState('won')
-    } else if (checkIfLost()) {
+
+    } else if (checkIfLost() && gameState !== 'lost') {
       Alert.alert("Try again!")
       setGameState('lost')
     }
@@ -48,7 +111,7 @@ export default function App() {
   }
 
   const checkIfLost = () => {
-    return currentRow === rows.length;
+    return checkIfWon() && currentRow === rows.length;
   };
 
   const onKeyPressed = (key) => {
@@ -161,7 +224,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 300,
     height: 125,
-    marginTop: 25,
+    marginTop: 20,
   },
   map: {
     alignSelf: 'stretch',

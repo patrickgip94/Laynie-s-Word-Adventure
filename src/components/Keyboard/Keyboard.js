@@ -22,7 +22,7 @@ const Keyboard = ({
     if (greyCaps.includes(key)) {
       return colors.darkgrey;
     }
-    return colors.grey;
+    return "#FFB6C1";
   };
 
   return (
