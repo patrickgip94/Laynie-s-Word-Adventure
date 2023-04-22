@@ -5,8 +5,9 @@ import { colors, CLEAR, ENTER, colorsToEmoji } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 
 
-const NUMBER_OF_TRIES = 5;
+const NUMBER_OF_TRIES = 6;
 
+// CREATES A NEW ARRAY WITH THE SAME VALUE AS THE ORIGINAL ONE
 const copyArray = (arr) => {
   return [...arr.map((rows) => [...rows])]
 };
@@ -75,9 +76,10 @@ const copyArray = (arr) => {
 // ]
 
 export default function App() {
-  // const word = words[dayOfTheYear];
+  // const word = words[dayOfTheYear]; *Requires updates*
   const word = "hello"
   const letters = word.split(''); // return array of letters ['h','e','l','l','o']
+
 
   const [rows, setRows] = useState(new Array(NUMBER_OF_TRIES).fill(
     new Array(letters.length).fill('')
@@ -87,17 +89,20 @@ export default function App() {
   const [currentCol, setCurrentCol] = useState(0);
   const [gameState, setGameState] = useState('playing'); // Won, Lost, Playing 
 
+
   useEffect(() => {
     if (currentRow > 0) {
       checkGameState()
     }
   }, [currentRow])
 
+
+  // CHECKING WHETHER THE GAME IS PLAYING, WON, OR LOST.
+  // THEN IT WILL RESET THE STATE
   const checkGameState = () => {
     if (checkIfWon() && gameState !== 'won') {
       Alert.alert("Good Job Laynie!")
       setGameState('won')
-
       // Reset the state after 3 seconds
       setTimeout(() => {
         resetState()
@@ -106,13 +111,16 @@ export default function App() {
     } else if (checkIfLost() && gameState !== 'lost') {
       Alert.alert("Try again!")
       setGameState('lost')
+
       // Reset the state after 3 seconds
       setTimeout(() => {
         resetState()
       }, 3000)
     }
+
   };
 
+  // RESET STATE FUNCTION
   const resetState = () => {
     setGameState('playing')
     setRows(new Array(NUMBER_OF_TRIES).fill(
@@ -122,14 +130,15 @@ export default function App() {
     setCurrentCol(0)
   }
 
+
+  // CHECKING EACH INDIVIDUAL ROW AND THE LETTERS OF THE INDICIES
   const checkIfWon = () => {
     const row = rows[currentRow - 1];
-
     return row.every((letter, i) => letter === letters[i])
   }
 
   const checkIfLost = () => {
-    return checkIfWon() && currentRow === rows.length;
+    return !checkIfWon() && currentRow === rows.length;
   };
 
   const onKeyPressed = (key) => {
