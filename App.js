@@ -98,11 +98,29 @@ export default function App() {
       Alert.alert("Good Job Laynie!")
       setGameState('won')
 
+      // Reset the state after 3 seconds
+      setTimeout(() => {
+        resetState()
+      }, 3000)
+
     } else if (checkIfLost() && gameState !== 'lost') {
       Alert.alert("Try again!")
       setGameState('lost')
+      // Reset the state after 3 seconds
+      setTimeout(() => {
+        resetState()
+      }, 3000)
     }
   };
+
+  const resetState = () => {
+    setGameState('playing')
+    setRows(new Array(NUMBER_OF_TRIES).fill(
+      new Array(letters.length).fill('')
+    ))
+    setCurrentRow(0)
+    setCurrentCol(0)
+  }
 
   const checkIfWon = () => {
     const row = rows[currentRow - 1];
