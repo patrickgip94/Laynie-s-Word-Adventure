@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Alert } from 'react-native';
 import { colors, CLEAR, ENTER } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 
@@ -23,8 +23,39 @@ export default function App() {
 
   const [currentRow, setCurrentRow] = useState(0);
   const [currentCol, setCurrentCol] = useState(0);
+  const [gameState, setGameState] = useState('playing'); // Won, Lost, Playing 
+
+  useEffect(() => {
+    if (currentRow > 0) {
+      checkGameState()
+    }
+  }, [currentRow])
+
+  const checkGameState = () => {
+    if (checkIfWon()) {
+      Alert.alert("Good Job Laynie!")
+      setGameState('won')
+    } else if (checkIfLost()) {
+      Alert.alert("Try again!")
+      setGameState('lost')
+    }
+  };
+
+  const checkIfWon = () => {
+    const row = rows[currentRow - 1];
+
+    return row.every((letter, i) => letter === letters[i])
+  }
+
+  const checkIfLost = () => {
+    return currentRow === rows.length;
+  };
 
   const onKeyPressed = (key) => {
+    if (gameState !== 'playing') {
+      return;
+    }
+
     const updatedRows = copyArray(rows)
 
     if (key === CLEAR) {
@@ -125,6 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fffff2',
     alignItems: 'center',
+    marginBottom: 15,
   },
   logo: {
     width: 300,
@@ -134,7 +166,6 @@ const styles = StyleSheet.create({
   map: {
     alignSelf: 'stretch',
     marginVertical: 20,
-    height: 100,
   },
   row: {
     alignSelf: 'stretch',
