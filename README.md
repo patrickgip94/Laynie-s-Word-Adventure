@@ -40,14 +40,13 @@
  ## Background
 Laynie's Word Adventure is a mobile app built using React Native and Expo, created by me for my daughter's enjoyment. I was tired of the incessant advertisements that plagued many of the popular apps on the Apple App Store, so I decided to take matters into my own hands and built an app that my daughter could play without any interruptions. Laynie's Word Adventure is a fun and educational game that helps children learn new words and expand their vocabulary in an engaging way. Thanks to the power of React Native and Expo, Laynie's Word Adventure is a cross-platform app that can be enjoyed on both iOS and Android devices. With its intuitive interface and user-friendly design, even young children can navigate the app with ease. Overall, Laynie's Word Adventure is a testament and commitment to my daughter's education and the power of technology to bring families together and create fun, and educational experiences that children will love.
 
+https://user-images.githubusercontent.com/102221024/233899332-01bd1a64-3dd4-4f98-8f8c-106c62657236.mp4
+
 ##
 *Future project*
 - Create an function that tracks their win/loss ratio
 - Implement difficulty mode
 
-<div>
-https://user-images.githubusercontent.com/102221024/233899332-01bd1a64-3dd4-4f98-8f8c-106c62657236.mp4
-</div>
 
 ### Built With
 
