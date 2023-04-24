@@ -106,7 +106,7 @@ export default function App() {
       // Reset the state after 3 seconds
       setTimeout(() => {
         resetState()
-      }, 3000)
+      }, 5000)
 
     } else if (checkIfLost() && gameState !== 'lost') {
       Alert.alert("Try again!")
@@ -115,7 +115,7 @@ export default function App() {
       // Reset the state after 3 seconds
       setTimeout(() => {
         resetState()
-      }, 3000)
+      }, 5000)
     }
 
   };
