@@ -45,9 +45,9 @@ Laynie's Word Adventure is a mobile app built using React Native and Expo, creat
 - Create an function that tracks their win/loss ratio
 - Implement difficulty mode
 
-
+<div>
 https://user-images.githubusercontent.com/102221024/233899332-01bd1a64-3dd4-4f98-8f8c-106c62657236.mp4
-
+</div>
 
 ### Built With
 
