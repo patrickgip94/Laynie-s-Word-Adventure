@@ -96,12 +96,17 @@ export default function App() {
     }
   }, [currentRow])
 
+  const message = "Good Job Laynie!";
+  const wordLength = word.length;
+  const totalLength = message.length + wordLength + 5;
+  const centeredWord = "\"" + word.padStart((totalLength - wordLength) / 2, "").padEnd(totalLength - wordLength - 2, "") + "\"";
+  const fullMessage = message + " The word was: " + centeredWord;
 
   // CHECKING WHETHER THE GAME IS PLAYING, WON, OR LOST.
   // THEN IT WILL RESET THE STATE
   const checkGameState = () => {
     if (checkIfWon() && gameState !== 'won') {
-      Alert.alert("Good Job Laynie!")
+      Alert.alert(fullMessage)
       setGameState('won')
       // Reset the state after 3 seconds
       setTimeout(() => {
