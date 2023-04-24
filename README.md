@@ -46,6 +46,8 @@ Laynie's Word Adventure is a mobile app built using React Native and Expo, creat
 - Implement difficulty mode
 
 
+https://user-images.githubusercontent.com/102221024/233899332-01bd1a64-3dd4-4f98-8f8c-106c62657236.mp4
+
 
 ### Built With
 
