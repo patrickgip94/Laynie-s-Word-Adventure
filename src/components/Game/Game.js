@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Alert, ScrollView } from 'react-native';
 import { colors, CLEAR, ENTER } from '../../constants';
 import Keyboard from '../Keyboard'
+import * as Clipboard from 'expo-clipboard';
+import words from '../../words';
 
 
 const NUMBER_OF_TRIES = 6;
@@ -20,59 +22,6 @@ const copyArray = (arr) => {
 //   return day;
 // }
 // const dayOfTheYear = getDayOfTheYear
-
-// const words = [
-//   "Hello",
-//   "Dog",
-//   "Cat",
-//   "Boba",
-//   "Duck",
-//   "Bear",
-//   "Mom",
-//   "Dad",
-//   "Tree",
-//   "Water",
-//   "House",
-//   "Food",
-//   "Apple",
-//   "Sky",
-//   "Blue",
-//   "Red",
-//   "Yellow",
-//   "Green",
-//   "apple",
-//   "baby",
-//   "ball",
-//   "banana",
-//   "bear",
-//   "bed",
-//   "bike",
-//   "bird",
-//   "book",
-//   "bottle",
-//   "butterfly",
-//   "car",
-//   "cat",
-//   "cookie",
-//   "cow",
-//   "dog",
-//   "duck",
-//   "egg",
-//   "fish",
-//   "flower",
-//   "frog",
-//   "hat",
-//   "house",
-//   "juice",
-//   "milk",
-//   "moon",
-//   "shoe",
-//   "star",
-//   "sun",
-//   "train",
-//   "tree",
-//   "water"
-// ]
 
 const Game = () => {
   // const word = words[dayOfTheYear]; *Requires updates*
